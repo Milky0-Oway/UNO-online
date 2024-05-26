@@ -707,8 +707,8 @@ const Game = (props) => {
 
     const handleGameOver = async () => {
         const updatedStats = {
-            gamesPlayed: stats.gamesPlayed + 1,
-            gamesWon: winner === currentUser ? stats.gamesWon + 1 : stats.gamesWon
+            gamesPlayed: Number(stats.gamesPlayed) + 1,
+            gamesWon: winner === currentUser ? Number(stats.gamesWon) + 1 : stats.gamesWon
         };
         setStats(updatedStats);
         return updatedStats;

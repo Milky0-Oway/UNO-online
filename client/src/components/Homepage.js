@@ -46,6 +46,8 @@ const Homepage = () => {
             const token = localStorage.getItem('token');
             const response = await axios.get('https://uno-online-5uml.onrender.com/stats', { headers: { Authorization: `Bearer ${token}` } });
             setStats(response.data);
+            localStorage.setItem('gamesPlayed',stats.gamesPlayed);
+            localStorage.setItem('gamesWon',stats.gamesWon);
         } catch (error) {
             alert('Failed to fetch stats');
         }
