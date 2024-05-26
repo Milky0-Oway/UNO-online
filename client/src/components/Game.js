@@ -739,7 +739,7 @@ const Game = (props) => {
             {(!roomFull) ? <>
 
                 <div className='topInfo'>
-                    <img src='./assets/logo.png'  alt=""/>
+                    <img src='assets/logo.png' alt=""/>
                     <h1>Game Code: {room}</h1>
                 </div>
 
@@ -760,7 +760,7 @@ const Game = (props) => {
                                             key={i}
                                             className='Card'
                                             onClick={() => onCardPlayedHandler(item)}
-                                            src='./assets/card-back.png'
+                                            src='assets/card-back.png'
                                             alt=""
                                         />
                                     ))}
@@ -825,7 +825,7 @@ const Game = (props) => {
                                             key={i}
                                             className='Card'
                                             onClick={() => onCardPlayedHandler(item)}
-                                            src='./assets/card-back.png'
+                                            src='assets/card-back.png'
                                             alt=""
                                         />
                                     ))}

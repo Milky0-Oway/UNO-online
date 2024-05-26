@@ -54,7 +54,7 @@ const Homepage = () => {
     return (
         <div className='Homepage'>
             <div className='homepage-menu'>
-                <img src='./assets/logo.png' width='200px' alt=''/>
+                <img src='assets/logo.png' width='200px' alt=''/>
                 <div className='homepage-form'>
                     {isAuthenticated ? (
                         <>
