@@ -8,7 +8,6 @@ const Homepage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [stats, setStats] = useState({ gamesPlayed: 0, gamesWon: 0 });
 
     useEffect(() => {
         const isAuthenticatedValue = localStorage.getItem('isAuthenticated');
@@ -45,9 +44,8 @@ const Homepage = () => {
         try {
             const token = localStorage.getItem('token');
             const response = await axios.get('https://uno-online-5uml.onrender.com/stats', { headers: { Authorization: `Bearer ${token}` } });
-            setStats(response.data);
-            localStorage.setItem('gamesPlayed',stats.gamesPlayed);
-            localStorage.setItem('gamesWon',stats.gamesWon);
+            localStorage.setItem('gamesPlayed', response.data.gamesPlayed);
+            localStorage.setItem('gamesWon', response.data.gamesWon);
         } catch (error) {
             alert('Failed to fetch stats');
         }
