@@ -726,7 +726,7 @@ const Game = (props) => {
     const updateStats = async (username, gamesPlayed, gamesWon) => {
         try {
             const token = localStorage.getItem('token');
-            await axios.put('https://uno-online-5uml.onrender.com/updateStats', { username, gamesPlayed, gamesWon }, { headers: { Authorization: `Bearer ${token}` } });
+            await axios.put('wss://uno-online-5uml.onrender.com/updateStats', { username, gamesPlayed, gamesWon }, { headers: { Authorization: `Bearer ${token}` } });
             console.log('User stats updated successfully');
         } catch (error) {
             console.error('Error updating user stats:', error.message);
