@@ -706,22 +706,21 @@ const Game = (props) => {
     }
 
     const handleGameOver = async () => {
-        setStats(prevStats => {
-            const updatedStats = {
-                gamesPlayed: Number(prevStats.gamesPlayed)+1,
-                gamesWon: winner === currentUser ? Number(prevStats.gamesWon) + 1 : prevStats.gamesWon
-            };
-            return updatedStats;
-        });
+        const updatedStats = {
+            gamesPlayed: stats.gamesPlayed + 1,
+            gamesWon: winner === currentUser ? stats.gamesWon + 1 : stats.gamesWon
+        };
+        setStats(updatedStats);
+        return updatedStats;
     };
 
     const handleQuit = async () => {
-        await handleGameOver();
-        await updateStats(username, stats.gamesPlayed, stats.gamesWon);
+        const updatedStats = await handleGameOver();
+        await updateStats(username, updatedStats.gamesPlayed, updatedStats.gamesWon);
         console.log(winner, currentUser);
         localStorage.setItem('isAuthenticated', true);
         history('/');
-    }
+    };
 
     const updateStats = async (username, gamesPlayed, gamesWon) => {
         try {
