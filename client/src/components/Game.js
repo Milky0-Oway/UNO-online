@@ -7,7 +7,7 @@ import {useLocation, useNavigate} from 'react-router-dom';
 import '../App.css';
 import axios from "axios";
 
-const ENDPOINT = 'http://localhost:5000';
+const ENDPOINT = 'https://uno-online-5uml.onrender.com/';
 /*
 const ENDPOINT = 'http://localhost:5000';
 */
