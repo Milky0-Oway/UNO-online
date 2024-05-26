@@ -31,7 +31,7 @@ const Homepage = () => {
 
     const login = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/login', { username, password });
+            const response = await axios.post('https://uno-online-5uml.onrender.com/login', { username, password });
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('username', username);
             setIsAuthenticated(true);
@@ -44,7 +44,7 @@ const Homepage = () => {
     const fetchStats = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get('http://localhost:5000/stats', { headers: { Authorization: `Bearer ${token}` } });
+            const response = await axios.get('https://uno-online-5uml.onrender.com/stats', { headers: { Authorization: `Bearer ${token}` } });
             setStats(response.data);
         } catch (error) {
             alert('Failed to fetch stats');
