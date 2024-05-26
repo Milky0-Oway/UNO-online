@@ -20,8 +20,8 @@ const Game = (props) => {
     const roomCode = queryParams.get('roomCode');
     const history = useNavigate();
     const username = queryParams.get('username');
-    let gamesPlayed = queryParams.get('gamesPlayed');
-    let gamesWon = queryParams.get('gamesWon');
+    let gamesPlayed = localStorage.get('gamesPlayed');
+    let gamesWon = localStorage.get('gamesWon');
     const [stats, setStats] = useState({ gamesPlayed: gamesPlayed, gamesWon: gamesWon });
 
     const [room, setRoom] = useState(roomCode);
@@ -717,6 +717,8 @@ const Game = (props) => {
     const handleQuit = async () => {
         const updatedStats = await handleGameOver();
         await updateStats(username, updatedStats.gamesPlayed, updatedStats.gamesWon);
+        localStorage.setItem('gamesPlayed', String(updatedStats.gamesPlayed));
+        localStorage.setItem('gamesWon', String(updatedStats.gamesWon));
         console.log(winner, currentUser);
         localStorage.setItem('isAuthenticated', true);
         history('/');
