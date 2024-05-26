@@ -20,8 +20,8 @@ const Game = (props) => {
     const roomCode = queryParams.get('roomCode');
     const history = useNavigate();
     const username = queryParams.get('username');
-    let gamesPlayed = localStorage.get('gamesPlayed');
-    let gamesWon = localStorage.get('gamesWon');
+    let gamesPlayed = localStorage.getItem('gamesPlayed');
+    let gamesWon = localStorage.getItem('gamesWon');
     const [stats, setStats] = useState({ gamesPlayed: gamesPlayed, gamesWon: gamesWon });
 
     const [room, setRoom] = useState(roomCode);
