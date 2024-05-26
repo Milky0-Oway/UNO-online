@@ -711,13 +711,13 @@ const Game = (props) => {
                 gamesPlayed: Number(prevStats.gamesPlayed)+1,
                 gamesWon: winner === currentUser ? Number(prevStats.gamesWon) + 1 : prevStats.gamesWon
             };
-            updateStats(username, updatedStats.gamesPlayed, updatedStats.gamesWon);
             return updatedStats;
         });
     };
 
     const handleQuit = async () => {
         await handleGameOver();
+        await updateStats(username, stats.gamesPlayed, stats.gamesWon);
         console.log(winner, currentUser);
         localStorage.setItem('isAuthenticated', true);
         history('/');
