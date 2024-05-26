@@ -21,7 +21,7 @@ const Homepage = () => {
 
     const register = async () => {
         try {
-            await axios.post('http://localhost:5000/register', { username, password });
+            await axios.post('https://uno-online-5uml.onrender.com/register', { username, password });
             alert('User registered successfully');
             login(); // Выполняем вход после успешной регистрации
         } catch (error) {
