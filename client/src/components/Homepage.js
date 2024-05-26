@@ -8,6 +8,7 @@ const Homepage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [updateFlag, setUpdateFlag] = useState(false);
 
     useEffect(() => {
         const isAuthenticatedValue = localStorage.getItem('isAuthenticated');
@@ -46,6 +47,7 @@ const Homepage = () => {
             const response = await axios.get('https://uno-online-5uml.onrender.com/stats', { headers: { Authorization: `Bearer ${token}` } });
             localStorage.setItem('gamesPlayed', response.data.gamesPlayed);
             localStorage.setItem('gamesWon', response.data.gamesWon);
+            setUpdateFlag(prev => !prev);
         } catch (error) {
             alert('Failed to fetch stats');
         }
