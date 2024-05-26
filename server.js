@@ -12,7 +12,14 @@ const PORT = process.env.PORT || 10000;
 
 const app = express();
 const server = http.createServer(app);
-const io = socketio(server);
+const io = socketio(server, {
+    cors: {
+        origin: "*",
+        methods: ["GET", "POST"],
+        allowedHeaders: ["Authorization"],
+        credentials: true
+    }
+});
 
 app.use(cors());
 app.use(express.json());
@@ -123,7 +130,7 @@ io.on('connection', socket => {
 });
 
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, 'client/build')));
+    app.use(express.static(path.join(__dirname, 'client', 'build')));
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
