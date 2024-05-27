@@ -65,6 +65,7 @@ app.get('/stats', (req, res) => {
 
 app.put('/updateStats', async (req, res) => {
     const { username, gamesPlayed, gamesWon } = req.body;
+    console.log(`Received update for ${username}: gamesPlayed = ${gamesPlayed}, gamesWon = ${gamesWon}`);
 
     db.run(`UPDATE users SET gamesPlayed = ?, gamesWon = ? WHERE username = ?`, [gamesPlayed, gamesWon, username], (err) => {
         if (err) {

@@ -62,11 +62,11 @@ const Homepage = () => {
                             <h1>{`Hello ${localStorage.getItem('username')}!`}</h1>
                             <div className='homepage-join'>
                                 <input type='text' placeholder='Game Code' onChange={(event) => setRoomCode(event.target.value)} />
-                                <Link to={`/play?roomCode=${roomCode}&username=${username}`}><button className="game-button green">JOIN GAME</button></Link>
+                                <Link to={`/play?roomCode=${roomCode}&username=${localStorage.getItem('username')}`}><button className="game-button green">JOIN GAME</button></Link>
                             </div>
                             <h1>OR</h1>
                             <div className='homepage-create'>
-                                <Link to={`/play?roomCode=${randomCodeGenerator(5)}&username=${username}`}><button className="game-button orange">CREATE GAME</button></Link>
+                                <Link to={`/play?roomCode=${randomCodeGenerator(5)}&username=${localStorage.getItem('username')}`}><button className="game-button orange">CREATE GAME</button></Link>
                             </div>
                             <div className='stats'>
                                 <p>Games Played: {localStorage.getItem('gamesPlayed')}</p>

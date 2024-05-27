@@ -716,7 +716,7 @@ const Game = (props) => {
 
     const handleQuit = async () => {
         const updatedStats = await handleGameOver();
-        await updateStats(username, updatedStats.gamesPlayed, updatedStats.gamesWon);
+        await updateStats(username, Number(updatedStats.gamesPlayed), Number(updatedStats.gamesWon));
         localStorage.setItem('gamesPlayed', String(updatedStats.gamesPlayed));
         localStorage.setItem('gamesWon', String(updatedStats.gamesWon));
         console.log(winner, currentUser);
@@ -727,10 +727,12 @@ const Game = (props) => {
     const updateStats = async (username, gamesPlayed, gamesWon) => {
         try {
             const token = localStorage.getItem('token');
-            await axios.put('https://uno-online-5uml.onrender.com/updateStats', { username, gamesPlayed, gamesWon }, { headers: { Authorization: `Bearer ${token}` } });
+            const response = await axios.put('https://uno-online-5uml.onrender.com/updateStats', { username, gamesPlayed, gamesWon }, { headers: { Authorization: `Bearer ${token}` } });
             console.log('User stats updated successfully');
+            console.log('Server response:', response.data);
         } catch (error) {
             console.error('Error updating user stats:', error.message);
+            console.log('Error response:', error.response?.data);
         }
     };
 
