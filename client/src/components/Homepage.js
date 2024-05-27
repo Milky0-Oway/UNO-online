@@ -15,7 +15,6 @@ const Homepage = () => {
         if (isAuthenticatedValue) {
             setIsAuthenticated(true);
             localStorage.removeItem('isAuthenticated'); // Удаляем значение из localStorage после использования
-            fetchStats(); // Получаем статистику пользователя при автоматическом входе
         }
     }, []);
 
@@ -23,7 +22,7 @@ const Homepage = () => {
         try {
             await axios.post('https://uno-online-5uml.onrender.com/register', { username, password });
             alert('User registered successfully');
-            login(); // Выполняем вход после успешной регистрации
+            await login();
         } catch (error) {
             alert(error.response.data.message);
         }
@@ -35,7 +34,7 @@ const Homepage = () => {
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('username', username);
             setIsAuthenticated(true);
-            fetchStats(); // Получаем статистику пользователя после входа
+            await fetchStats();
         } catch (error) {
             alert(error.response.data.message);
         }
@@ -47,7 +46,7 @@ const Homepage = () => {
             const response = await axios.get('https://uno-online-5uml.onrender.com/stats', { headers: { Authorization: `Bearer ${token}` } });
             localStorage.setItem('gamesPlayed', response.data.gamesPlayed);
             localStorage.setItem('gamesWon', response.data.gamesWon);
-            setUpdateFlag(prev => !prev);
+            if(!updateFlag) setUpdateFlag(prev => !prev);
         } catch (error) {
             alert('Failed to fetch stats');
         }

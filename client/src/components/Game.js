@@ -135,7 +135,7 @@ const Game = (props) => {
             const chatBody = document.querySelector('.chat-body')
             chatBody.scrollTop = chatBody.scrollHeight
         })
-    }, [socket]);
+    }, []);
 
     const checkGameOver = (arr) => {
         return arr.length === 1;
