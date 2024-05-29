@@ -395,7 +395,10 @@ const Game = (props) => {
         }
         else if(played_card === 'W'){
             if(cardPlayedBy === 'Player 1'){
-                const newColor = prompt('Enter first letter of new color (R/G/B/Y)').toUpperCase();
+                let newColor = '';
+                    while(newColor != 'R' && newColor != 'G' && newColor != 'B' && newColor != 'Y'){
+                        newColor = prompt('Enter first letter of new color (R/G/B/Y)').toUpperCase();
+                    }
                 const removeIndex = player1Deck.indexOf(played_card);
                 if(player1Deck.length === 2 && !isUnoButtonPressed){
                     alert('You forgot to press UNO. You drew 2 cards as penalty.');
@@ -429,7 +432,10 @@ const Game = (props) => {
                 }
             }
             else{
-                const newColor = prompt('Enter first letter of new color (R/G/B/Y)').toUpperCase();
+                let newColor = '';
+                    while(newColor != 'R' && newColor != 'G' && newColor != 'B' && newColor != 'Y'){
+                        newColor = prompt('Enter first letter of new color (R/G/B/Y)').toUpperCase();
+                    }
                 const removeIndex = player2Deck.indexOf(played_card);
                 if(player2Deck.length === 2 && !isUnoButtonPressed){
                     alert('You forgot to press UNO. You drew 2 cards as penalty.');
@@ -465,7 +471,10 @@ const Game = (props) => {
         }
         else if(played_card === 'D4W'){
             if(cardPlayedBy === 'Player 1'){
-                const newColor = prompt('Enter first letter of new color (R/G/B/Y)').toUpperCase();
+                let newColor = '';
+                    while(newColor != 'R' && newColor != 'G' && newColor != 'B' && newColor != 'Y'){
+                        newColor = prompt('Enter first letter of new color (R/G/B/Y)').toUpperCase();
+                    }
                 const removeIndex = player1Deck.indexOf(played_card);
                 const copiedDrawCardPileArray = [...drawCardPile];
                 const drawCard1 = copiedDrawCardPileArray.pop();
@@ -504,7 +513,10 @@ const Game = (props) => {
                 }
             }
             else{
-                const newColor = prompt('Enter first letter of new color (R/G/B/Y)').toUpperCase();
+                let newColor = '';
+                    while(newColor != 'R' && newColor != 'G' && newColor != 'B' && newColor != 'Y'){
+                        newColor = prompt('Enter first letter of new color (R/G/B/Y)').toUpperCase();
+                    }
                 const removeIndex = player2Deck.indexOf(played_card);
                 const copiedDrawCardPileArray = [...drawCardPile];
                 const drawCard1 = copiedDrawCardPileArray.pop();
@@ -588,7 +600,10 @@ const Game = (props) => {
             }
             else if(drawCard === 'W'){
                 alert(`You drew ${drawCard}. It was played for you.`);
-                const newColor = prompt('Enter first letter of new color (R/G/B/Y)').toUpperCase();
+                let newColor = '';
+                    while(newColor != 'R' && newColor != 'G' && newColor != 'B' && newColor != 'Y'){
+                        newColor = prompt('Enter first letter of new color (R/G/B/Y)').toUpperCase();
+                    }
                 socket.emit('updateGameState', {
                     turn: 'Player 2',
                     playedCardsPile: [...playedCardsPile.slice(0, playedCardsPile.length), drawCard, ...playedCardsPile.slice(playedCardsPile.length)],
@@ -599,7 +614,10 @@ const Game = (props) => {
             }
             else if(drawCard === 'D4W'){
                 alert(`You drew ${drawCard}. It was played for you.`);
-                const newColor = prompt('Enter first letter of new color (R/G/B/Y)').toUpperCase();
+                let newColor = '';
+                    while(newColor != 'R' && newColor != 'G' && newColor != 'B' && newColor != 'Y'){
+                        newColor = prompt('Enter first letter of new color (R/G/B/Y)').toUpperCase();
+                    }
                 const copiedDrawCardPileArray = [...drawCardPile];
                 const drawCard1 = copiedDrawCardPileArray.pop();
                 const drawCard2 = copiedDrawCardPileArray.pop();
